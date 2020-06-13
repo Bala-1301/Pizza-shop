@@ -1,0 +1,124 @@
+body {
+	position: relative;
+}
+#mainDiv {
+	
+	background-color:#101010;	
+}
+#logo {
+	margin: 10px;
+	margin-right: 70px;
+}
+#nav {
+	background-color: black;
+	
+}
+#headers {
+	position: relative;
+	align-content: center;
+}
+
+#links{
+	margin-top : 1vw;
+}
+
+.a, .a1 {
+	display : inline-block; 
+	font-size: 1.3vw;
+}
+
+#quote1 {
+	position: absolute;
+	top: 13vw;
+	left: 2vw;
+}
+#quote2 {
+	position: relative;
+	top: 20vw;
+	padding-left: 12vw;
+}
+.quoteText {
+	font-size: 2vw;
+	color : white;
+	font-style: italic;
+	font-family:Georgia, 'Times New Roman', Times, serif;
+}
+#menu {
+	padding: 2vw;
+}
+h1 {
+	color : #ffcc00;
+	font-size: 3vw ;
+	font-weight: bolder;
+	font-family:cursive;
+	padding: 1vw;
+}
+ul{
+	list-style-type: none;
+	color: white;
+	margin: 0;
+	padding: 0;
+	padding-left: 2vw;
+	font-size: 1.4vw;
+}
+ul > li {
+	padding : 5px;
+}
+ol > li {
+	list-style-type: none;
+	font-size: 1.3vw;
+	padding: 3px;
+}
+#pizza_toppings > li {
+	display: inline-block;
+	
+}
+#span2 {
+	color: #dbc00d;
+}
+h2 {
+	font-size: 2.5vw;
+	color :#ffcc00;
+	font-weight: bolder;
+	font-family:cursive;
+	text-decoration: underline;
+	text-decoration-color: white;
+	text-decoration-style:double;
+}
+#map {
+	width : 95%;
+	height: 32vw;
+	margin : 3vw;
+}
+#contact {
+	
+	padding: 2vw;
+}
+.p2 {
+	font-size: 1.3vw;	
+	color: white;
+}
+#locate {
+	padding : 3vw;
+	padding-left: 3vw;
+	padding-right: 3vw;
+	
+}
+/* #button1, #button2 {
+	font-size: 1.5vw;
+	height: 3.5vw;
+	width: 12vw;
+	background-color: #f5a742;
+	color : white;
+} 
+#button1 {
+	width: 100px;
+	padding-top: 8px;
+	position:relative;
+	bottom: 15vw;
+	left: 8vw; 
+}
+#button2 {
+	margin-top: 3vw;
+	margin-left: 8vw;
+} */

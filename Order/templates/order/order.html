@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+		<title>Online Order</title>
+		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<!-- <link rel="stylesheet" href="{% static 'order/styles.css' %}" > -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<style>
+			#navbar {
+				background-color: #577eeb;
+				
+			}
+			#link > li> a {
+				color: white;
+			}
+			.u1 > li {
+				margin-top: 50px;
+				display : inline-block;
+				height : 300px;
+				
+			}
+			.sub-div {
+				margin-left: 0px;
+			}
+			.navbar-default .navbar-nav>.active> a, 
+			.navbar-default .navbar-nav>.active> a:focus, 
+			.navbar-default .navbar-nav>.active> a:hover {
+				background: lightseagreen; /* Anything you want */
+			}
+   			
+			#header {
+				margin-right: 5vw;
+			
+			}
+			#header > a > span {
+				color : white;
+			}
+			.a {
+				margin-left: 3vw;
+				display: inline-block;
+				font-size: 1.3vw;
+				text-align: center;
+			}
+			#a1:hover, #a2:hover, #a3:hover, #a4:hover, #a5:hover{
+				text-decoration: underline;
+			}
+			#mainDiv {
+				background-color: #dadbd3;
+				
+				margin-bottom: 50px;
+			}
+			.container {
+				margin-left: 0px;
+				width: 1250px;
+			}
+			.header {
+				display: flex;
+				align-items: center;
+				margin-top: 70px;
+				
+			}
+			.header::before, .header::after {
+				content: '';
+				flex: 1;
+				border-bottom: 1px solid #000;
+			}
+			.header::before {
+				margin-right: .25em;
+			}
+			.header::after {
+				margin-left: .25em;
+			}
+			.img{
+				height: 150px;
+				width: 100%;
+			}
+			#pizza > div > ul > li > div {
+				height : 330px;
+			}
+			#pizza > div > ul > li > div > button {
+				position: absolute;
+				right: 25px;
+				bottom: -20px;
+			}
+			#pizza > div > ul > li > div > p {
+				position: absolute;
+				left : 30px;
+				bottom: -25px;
+			}
+			.p1 {
+				font-size: 15px;
+				font-weight: bolder;
+				
+			}
+			.p1 > span {
+				font-size: 10px;
+				font-weight: lighter;
+				text-align: left;
+				align-items: left;
+			}
+			.select, .select2, .cart-select, .cart-select2, .select-pizza {
+				border : 0px;
+				border-bottom: 1px solid black;
+				display : inline-flex;
+			}
+			.select2 {
+				margin:7px;
+				width : 55px;
+			}
+			.select, .select-pizza {
+				margin : 2px;
+				width: 100px;
+			}
+		
+			.div1 {
+				background-color: white;
+				width : 250px;
+				padding: 10px;
+				height : 310px;
+				box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.23),  0 6px 10px 0 rgba(0, 0, 0, 0.21);
+			}
+			.button1 {
+				position: absolute;
+				right: 25px;
+				bottom: -2px;
+			}
+			.p2 {
+				position: absolute;
+				left : 30px;
+				bottom: -10px;
+				font-weight: bolder;
+				font-size:17px;
+			}
+			#cart {
+				background-color:  white;
+				position: fixed;
+				top: 8vw;
+				right: 3vw;
+				display : block;	
+				height: 430px;
+				width: 300px;
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),  0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				overflow-y:auto;
+				
+			}
+			#abc {
+				overflow-y:auto;
+			}
+			#cart::-webkit-scrollbar {
+				width: 0px;
+				opacity: 0;
+			} 
+			#cart-ul {
+				list-style-type: none;
+				margin : 0px;
+				padding: 0px;
+				overflow-y:auto;
+				margin-bottom: 60px;;
+			}
+			
+			#fab {
+				position: fixed;
+				bottom: 3vw;
+				right: 3vw;
+				height: 4vw;
+				width: 4vw;
+				border-radius: 30px;
+				
+			}
+			#cart-p {
+				position:absolute;
+				bottom : 100px;
+				left: 15px;
+				font-size: 15px;
+			}
+			#cart-p > b {
+				font-size: 20px;
+			}
+			#cart-p2 {
+				
+				position:absolute;
+				bottom : 80px;
+				left : 50px;
+				font-size: 15px;
+			}
+			.cart-div {
+				padding: 10px;
+				height: 90px;
+				
+			}
+			.cart-img {
+				height: 65px;
+				width: 80px;
+			}
+			.cart-p {
+				font-weight: bold;
+			}
+			
+			.cart-choice {
+				font-size: 13px;
+			}
+			.cart-select {
+				width: 90px; 
+				margin-right: 10px;
+				width: 60px;
+			}
+			.cart-select2 {
+				width : 40px;
+				margin-left: 3px;
+			}
+			.cart-button {
+				margin: 5px;
+				margin-left: 13px;
+				height: 25px;
+				width: 30px;
+			}
+			.cart-txt-div {
+				height: 65px;
+			}
+			.cart-price {
+				float : right;
+				font-weight: bold;
+			}
+			#proceed-div {
+				display: none;
+				position: fixed;
+				box-shadow :0 0 0 0 rgba(0, 0, 0, 0.2),  0 0 20px 0 rgba(0, 0, 0, 0.19) ;
+				bottom: 118px;
+				right: 3vw;
+				width: 300px;
+				background-color:#ffe ;
+
+			}
+			#sub-total {
+				font-size: 20px;
+				font-weight: bold;
+				padding-top: 10px;
+				padding-left: 10px;;
+			}
+			#sub-total > span {
+				float: right;
+				padding-right: 10px;
+			}
+			#proceed {
+				width: 300px;
+				border-radius: 0;
+				 
+			}
+		</style>
+		<script>
+			var cart = []
+			var subTotal = 0
+			
+			document.addEventListener("DOMContentLoaded", function(){
+				var subTotalSpan = document.getElementById("sub-total").firstElementChild
+				
+				var pizza = document.getElementById("a1")
+				var sub = document.getElementById("a2")
+				var pasta = document.getElementById("a3")
+				var salad = document.getElementById("a4")
+				var platter = document.getElementById("a5")
+				
+				
+				pizza.setAttribute("href","#pizza")
+				sub.setAttribute("href","#sub")
+				pasta.setAttribute("href","#pasta")
+				salad.setAttribute("href","#salad")
+				platter.setAttribute("href","#platter")
+
+				
+				pizzaSizeChanged = (element) => {
+					var form = element.parentElement
+					var a = element.dataset
+					var sizeIndex = element.selectedIndex
+					var select = element.nextElementSibling
+					var priceTag = element.parentElement.parentElement.nextElementSibling.nextElementSibling
+					var index = select.value
+					
+					var topPrice = Number(select.options[index].dataset.price)
+					
+					for(var i = 3; i >= 1; i--){
+						select.options[i].remove()
+					}
+					if(element.options[sizeIndex] === "small"){
+						select.options[select.options.length] = new Option(`Single : ₹${a.pizzaOts}`, "1")
+						select.options[select.options.length-1].setAttribute("data-price", `${a.pizzaOts}`)
+						select.options[select.options.length] = new Option(`Double : ₹${a.pizzaTts}`, "2")
+						select.options[select.options.length-1].setAttribute("data-price", `${a.pizzaTts}`)
+						select.options[select.options.length] = new Option(`Triple : ₹${a.pizzaThts}`, "3")
+						select.options[select.options.length-1].setAttribute("data-price", `${a.pizzaThts}`)
+					}
+					else{
+						select.options[select.options.length] = new Option(`Single : ₹${a.pizzaOtl}`, "1")
+						select.options[select.options.length-1].setAttribute("data-price", `${a.pizzaOtl}`)
+						select.options[select.options.length] = new Option(`Double : ₹${a.pizzaTtl}`, "2")
+						select.options[select.options.length-1].setAttribute("data-price", `${a.pizzaTtl}`)
+						select.options[select.options.length] = new Option(`Triple : ₹${a.pizzaThtl}`, "3")
+						select.options[select.options.length-1].setAttribute("data-price", `${a.pizzaThtl}`)
+					
+					}
+					var basePrice = Number(element.options[sizeIndex].dataset.pizzaPrice)
+					priceTag.innerHTML = "₹"+(basePrice+topPrice).toFixed(2)
+					select.selectedIndex = index
+				}
+
+				toppingChanged = (element) => {
+					var form = element.parentElement
+					var childCount = form.childElementCount
+					var size = element.previousElementSibling
+					var sizeIndex = size.selectedIndex
+					var basePrice = Number(size.options[sizeIndex].dataset.pizzaPrice)
+					var priceTag = element.parentElement.parentElement.nextElementSibling.nextElementSibling
+
+					var index = element.selectedIndex
+					var topPrice = Number(element.options[index].dataset.price)
+					
+					priceTag.innerHTML = "₹"+(basePrice+topPrice).toFixed(2)
+					for( var i = 0; i < childCount-2; i++){
+						element.nextSibling.remove()
+					}
+					if (element.selectedIndex < 1){
+						return
+					}
+					try{
+						element.nextSibling.remove()
+					}catch(err){}
+					var value = element.value
+					
+					for(var i = 0; i < value; i++){
+						var select2 = document.createElement("select")
+						select2.className ="select2"
+						select2.options[0] = new Option(`Top${i+1}`, "")
+						try{
+						`{% for item in toppings %}
+							${select2.options[select2.options.length] = new Option("{{item}}", "{{item}}")}
+						{% endfor %}`
+						}catch(err){}
+						form.appendChild(select2)
+					}
+				}
+			
+				var formSize = document.getElementsByClassName("select")
+				for(var i = 0; i < formSize.length; i++){
+					formSize[i].onchange = function(){
+						var priceTag = this.parentElement.parentElement.nextElementSibling.nextElementSibling
+						
+						var index = this.selectedIndex
+						var price = this.options[index].dataset.price
+						priceTag.innerHTML = "₹" + price
+					}
+				}
+
+				var button = document.getElementsByClassName("button1")
+				for(var i = 0; i < button.length; i++){
+					button[i].onclick = function(){
+						var ul = document.getElementById("cart-ul")
+						document.getElementById("cart-p").style.display = "none";
+						document.getElementById("proceed-div").style.display = "block";
+						var li1 = this.parentElement.parentElement
+						var div1 = li1.firstElementChild
+						
+						var imgDiv1 = div1.firstElementChild
+						var img1 = imgDiv1.firstElementChild
+						var txtDiv1 = imgDiv1.nextElementSibling
+						var itemName1 = txtDiv1.firstElementChild
+						
+						
+						var li2 = li1.cloneNode(true)
+						var div2 = li2.firstElementChild
+						var imgDiv2 = div2.firstElementChild
+						var img2 = imgDiv2.firstElementChild
+						var txtDiv2 = imgDiv2.nextElementSibling
+						var itemName2 = txtDiv2.firstElementChild
+						
+						var button = txtDiv2.nextElementSibling
+						var price = button.nextElementSibling
+						try{
+							var form1 = itemName1.nextElementSibling
+							var sizeSelect1 = form1.firstElementChild
+							var form2 = itemName2.nextElementSibling
+							var sizeSelect2 = form2.firstElementChild
+							form2.className = "cart-form"
+							txtDiv2.removeChild(form2)
+						}catch(err){}
+
+						div2.className = "cart-div"
+						img2.className = "cart-img"
+						itemName2.className = "cart-p"
+						
+						button.className = "cart-button"
+						imgDiv2.className="col-sm-4"
+						txtDiv2.className ="col-sm-8 cart-txt-div"
+						price.className = "cart-price"
+
+						
+						div2.classList.remove("div1")
+						li2.classList.remove("col-sm-4")
+						li2.classList.remove("text-center")
+						
+						button.classList.remove("button1")
+						price.classList.remove("p2")
+						var choice = document.createElement("p")
+						try {
+							itemName2.firstElementChild.nextElementSibling.remove()
+						}
+						catch(err){}
+						try{
+							
+							if(sizeSelect2.tagName == "SPAN"){
+								throw err
+							}
+							sizeSelValue = sizeSelect1.value
+							console.log(sizeSelValue)
+							sizeSelValue = sizeSelValue[0].toUpperCase() + sizeSelValue.slice(1);
+							var temp = sizeSelValue
+						
+							var topping1 = sizeSelect1.nextElementSibling
+						
+							var top11 = topping1.nextElementSibling
+							temp += " | " + top11.value
+							
+							var top12 = top11.nextElementSibling
+							temp += " | " + top12.value
+							
+							var top13 = top12.nextElementSibling
+							temp += " | " + top13.value
+							
+						}
+						catch(err){}
+						if(temp)
+							choice.innerHTML = temp
+						choice.className = "cart-choice"
+						txtDiv2.appendChild(choice)
+						var hr = document.createElement("hr")
+						li2.appendChild(hr)
+						ul.append(li2)
+						item = {"itemName": itemName1.innerHTML, "description": choice.innerHTML, "price": price.innerHTML.slice(1)}
+						cart.push(item)
+						subTotal += Number(price.innerHTML.slice(1))
+						subTotalSpan.innerHTML = "₹"+subTotal
+						
+					}
+						
+				}
+			});
+			
+		</script>
+	</head>
+	<body data-spy="scroll" data-target=".navbar" data-offset="50">
+		
+		<nav class="navbar  navbar-light bg-light navbar-default navbar-fixed-top" id="navbar">
+			<div class="container-fluid">
+				<div class="navbar-header" id="header">
+					<a class="navbar-brand" href="{% url 'index' %}"><span class="glyphicon glyphicon-home"></span></a>
+				</div>
+				<ul class="nav navbar-nav" id="link">
+					<li class="a"><a href="#" id="a1" >Pizza</a></li>
+					<li class="a"><a href="#" id="a2" >Sub</a></li>
+					<li class="a"><a href="#" id="a3" >Pasta</a></li>
+					<li class="a"><a href="#" id="a4" >Salad</a></li>
+					<li class="a"><a href="#" id="a5" >Dinner Platters</a></li>
+				</ul>
+				
+			</div>
+		</nav>
+		
+		<div id="mainDiv">
+			<div id="pizza" class="container ">
+				<div class="col-sm-9">
+				<h1 class="header">Pizza</h1>
+				<ul class="u1 ">
+					{% for pizza in pizzas %}
+					<li class="col-sm-4 text-center">
+						<div class="div1">
+							<div>
+								<img src="{% static 'pizza.jpg' %}"  class="img" />
+							</div>
+							<div> 
+								<p class="p1">{{pizza.name}}<br><span>Description about the item will be displayed here! This is just a temporary!</span></p>
+								<form class="form-horizontal">
+									<select onchange="pizzaSizeChanged(this)" class="select-pizza"   data-pizza-ots="{{pizza.oneToppingSmall}}" data-pizza-tts="{{pizza.twoToppingsSmall}}" data-pizza-thts="{{pizza.threeToppingsSmall}}" data-pizza-otl="{{pizza.oneToppingLarge}}" data-pizza-ttl="{{pizza.twoToppingsLarge}}" data-pizza-thtl="{{pizza.threeToppingsLarge}}">
+										<option value="small" data-pizza-price="{{pizza.smallPrice}}"> Small : ₹{{pizza.smallPrice}}</option>	
+										<option value="large" data-pizza-price="{{pizza.largePrice}}"> Large : ₹{{pizza.largePrice}}</option>
+									</select>
+									<select class="select-pizza" onchange="toppingChanged(this)" >
+										<option value="0" data-price="0">No toppings</option>
+										<option value="1" data-price="{{pizza.oneToppingSmall}}">Single: ₹{{pizza.oneToppingSmall}}</option>
+										<option value="2" data-price="{{pizza.twoToppingsSmall}}">Double: ₹{{pizza.twoToppingsSmall}}</option>
+										<option value="3" data-price="{{pizza.threeToppingsSmall}}">Triple: ₹{{pizza.threeToppingsSmall}}</option>
+									</select>
+								</form>
+							</div>
+							<button class="button1"><span class="glyphicon glyphicon-plus"></span></button>
+							<p class="p2">₹{{pizza.smallPrice}}</p>
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+				<div class="col-sm-3"></div>
+			</div>
+			<div id="sub"  class="container">
+				<div class="col-sm-9 sub-div">
+				<h1 class="header">Sub</h1>
+				<ul class="u1">
+					{% for sub in subs %}
+					<li class="col-sm-4 text-center">
+						<div class="div1">
+							<div class="img-div">
+								<img src="{% static 'sub.jpg' %}"  class="img" />
+							</div>
+							<div>
+								<p class="p1">{{sub.name}}</p>
+								<form class="form-horizontal">
+									<select class="select" >
+										<option value="small" data-price = "{{sub.smallPrice}}"> Small : ₹{{sub.smallPrice}}</option>	
+										<option value="large" data-price = "{{sub.largePrice}}"> Large : ₹{{sub.largePrice}}</option>
+									</select>
+									
+								</form>	
+							
+							</div>
+							<button class="button1"><span class="glyphicon glyphicon-plus"></span></button>
+							<p class="p2">₹{{sub.smallPrice}}</p>
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="col-sm-3"></div>
+			</div>
+			
+			<div id="pasta" class="container" >
+				<div class="col-sm-9 sub-div">
+				<h1 class="header">Pasta</h1>
+				<ul class="u1">
+					{% for pasta in pastaWithServings %}
+					<li class="col-sm-4 text-center">
+						<div class="div1">
+							<div class="img-div">
+								<img  src="{% static 'pasta.jpg' %}"  class="img" />
+							</div>
+							<div>
+								<p class="p1">{{pasta}}</p>
+											
+							</div>
+							<button class="button1"><span class="glyphicon glyphicon-plus"></span></button>	
+							<p class="p2">₹{{pasta.price}}</p>
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="col-sm-3"></div>
+			</div>
+			<div id="salad" class="container" >
+				<div class="col-sm-9 sub-div">
+				<h1 class="header">Salad</h1>
+				<ul class="u1">
+					{% for salad in salads %}
+					<li class="col-sm-4 text-center">
+						<div class="div1">
+							<div class="img-div">
+								<img src="{% static 'salad.jpg' %}"  class="img"   />
+							</div>
+							<div>
+								<p class="p1">{{salad.name}}</p>
+												
+							</div>
+							<button class="button1"><span class="glyphicon glyphicon-plus"></span></button>
+							<p class="p2">₹{{salad.price}}</p>
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="col-sm-3"></div>
+			</div>
+			<div id="platter" class="container">
+				<div class="col-sm-9 sub-div">
+				<h1 class="header">Dinner Platter</h1>
+				<ul class="u1">
+					{% for platter in dinnerPlatters %}
+					<li class="col-sm-4 text-center">
+						<div class="div1">
+							<div class="img-div">
+								<img src="{% static 'platter.jpg' %}"  class="img"   />
+							</div>
+							<div>
+								<p class="p1">{{platter.name}}</p>
+								<form class="form-horizontal">
+									<select  class="select" >
+										<option value="small"> Small : ₹{{platter.smallPrice}}</option>
+										<option value="large"> Large : ₹{{platter.largePrice}}</option>
+									</select>
+								</form>
+											
+							</div>
+							<button class="button1"><span class="glyphicon glyphicon-plus"></span></button>	
+							<p class="p2">₹{{platter.smallPrice}}</p>
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="col-sm-3"></div>
+			</div>
+		</div>
+		
+		<div  id="cart">
+			<div id="abc">
+			<ul id="cart-ul">
+
+			</ul>
+		</div>
+			<p id="cart-p"><b>YOUR CART IS EMPTY</b><br>Please add some items from the menu!</p>
+			<div id="proceed-div">
+				<p id="sub-total">Sub Total :<span>₹</span></p>
+				<button class="btn btn-success" id="proceed"  onclick="" >Proceed to Order</button>
+			</div>
+		</div>
+		
+		
+	</body>
+</html>

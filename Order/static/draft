@@ -1,0 +1,103 @@
+var stateObject = {
+				"Andhra Pradesh": ["Visakhapaynam","Krishna","Guniur","East Godavan","East Godavan","Chittoor","West Godavari"],
+				"Karnataka": ["Belagavi","Bengaluru","Bhadravati","Bidar","Chitradurga","Davanagere","Gadag-Betageri","Gangavati","Mangaluru","Mysuru"],
+				"Kerala" : ["Kochi","Kozhikode","Kannur","Kollam","Malappuram","Thiruvananthapuram","Thrissur"],
+				"Tamil Nadu" : ["Chennai", "Coimbatore", "Madurai", "Salem", "Erode","Thanjavur","Tuticorin" ],
+				"Telangana" : ['Hyderabad', 'Karimnagar', 'Khammam', 'Mahabubnagar', 'Nizamabad', 'Ramagundam', 'Warangal']
+			}
+			
+			document.addEventListener("DOMContentLoaded", function() {
+					var stateSel = document.getElementById("stateSel")
+					var citySel = document.getElementById("citySel")
+					
+					for (var state in stateObject) {
+						stateSel.options[stateSel.options.length] = new Option(state, state)
+					}
+					stateSel.onchange = function() {
+						citySel.length = 1;
+						if(this.selectedIndex < 1)
+							return
+						var city = stateObject[this.value]
+						console.log("city", city)
+						for (var i = 0; i < city.length; i++) {
+							citySel.options[citySel.options.length] = new Option(city[i], city[i]);
+						}
+					}
+			})
+
+<div class="form-group">
+						<label class="col-sm-3" for="email">State:</label>
+						<div class="col-sm-9">
+						<select id="stateSel" class="form-control">
+							<option value="" selected="selected">--Select your State--</option>
+						</select>
+						
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3" for="email">City:</label>
+						<div class="col-sm-9">
+							<select id="citySel" class="form-control">
+								<option value="" selected="selected">--Select your City--</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3" for="email">Area:</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="city" id="city" required="required" placeholder="Enter your city"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3" for="email">Street:</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="Street" id="street" required="required" placeholder="Enter your Street"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3" for="email">Door No:</label>
+						<div class="col-sm-9">
+							<input type="tel" class="form-control" name="doorNo" id="doorNo" required="required" placeholder="Enter your Door No"/>
+						</div>
+					</div>
+					
+if not request.user.is_authenticated:
+		return render(request, 'registration/login.html', {"message": None})
+
+
+
+	<ul class="nav navbar-nav navbar-right">
+					<li><button class="btn btn-primary" style="margin-top: 10px;;" onclick="showCart()" id="a6"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</button></li>
+				</ul>
+
+	var x = li1.firstElementChild.firstElementChild
+						var imgSrc = x.src
+						var itemName = x.nextElementSibling.innerHTML
+						try{
+						var size = x.nextElementSibling.nextElementSibling.firstElementChild.value
+						var topping = x.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.value
+						var top = []
+						top1 = x.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling.value
+						top2 = x.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.value
+						top3 = x.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.value
+						}
+						catch(err){}
+						var li = document.createElement("li")
+						var div = document.createElement("div")
+						var img = document.createElement("img")
+						var name = document.createElement("p")
+						if(size != undefined){
+							var form = document.createElement("form")
+							var select = document.createElement("select")
+							
+						}
+						img.src = imgSrc;
+						img.height = 100;
+						img.width = 100;
+						name.innerHTML = itemName;
+						div.appendChild(img)
+						div.appendChild(name)
+						li.append(div)
+						ul.appendChild(li)
+					}
+				}

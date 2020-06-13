@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+		<title>{% block title %}{% endblock %}</title>
+		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<style>
+			
+			#mainDiv {
+				
+				background-color:#101010;	
+			}
+			#logo {
+				margin: 10px;
+				margin-right: 70px;
+			}
+			#nav {
+				background-color: black;
+				
+			}
+			#headers {
+				position: relative;
+				align-content: center;
+			}
+
+			#links{
+				margin-top : 1vw;
+			}
+
+			.a, .a1 {
+				display : inline-block; 
+				font-size: 1.3vw;
+			}
+
+			#quote1 {
+				position: absolute;
+				top: 10vw;
+				left: 2vw;
+			}
+			#quote2 {
+				position: relative;
+				top: 20vw;
+				padding-left: 12vw;
+			}
+			.quoteText {
+				font-size: 2vw;
+				color : white;
+				font-style: italic;
+				font-family:Georgia, 'Times New Roman', Times, serif;
+			}
+			#menu {
+				padding: 2vw;
+			}
+			h1 {
+				color : #ffcc00;
+				font-size: 3vw ;
+				font-weight: bolder;
+				font-family:cursive;
+				padding: 1vw;
+			}
+			ul{
+				list-style-type: none;
+				color: white;
+				margin: 0;
+				padding: 0;
+				padding-left: 2vw;
+				font-size: 1.4vw;
+			}
+			ul > li {
+				padding : 5px;
+			}
+			ol > li {
+				list-style-type: none;
+				font-size: 1.3vw;
+				padding: 3px;
+			}
+			#pizza_toppings > li {
+				display: inline-block;
+				
+			}
+			#span2 {
+				color: #dbc00d;
+			}
+			h2 {
+				font-size: 2.5vw;
+				color :#ffcc00;
+				font-weight: bolder;
+				font-family:cursive;
+				text-decoration: underline;
+				text-decoration-color: white;
+				text-decoration-style:double;
+			}
+			#map {
+				width : 95%;
+				height: 32vw;
+				margin : 3vw;
+			}
+			#contact {
+				
+				padding: 2vw;
+			}
+			.p2 {
+				font-size: 1.3vw;	
+				color: white;
+			}
+			#locate {
+				padding : 3vw;
+				padding-left: 3vw;
+				padding-right: 3vw;
+				
+			}
+			#button2 {
+				font-size: 1.5vw;
+				height: 3.5vw;
+				width: 12vw;
+				background-color: #f5a742;
+				color : white;
+				margin-top: 3vw;
+				margin-left: 8vw;
+			} 
+			
+			#button1 {
+			
+				width: 300px;
+				height: 50px;
+				position: absolute;
+				top: 280px;
+				left: 80px;
+				
+			}
+			
+		</style>
+		<!-- <link rel="stylesheet" href="{% static 'index/styles.css' %}" > -->
+		
+	</head>
+	<body data-spy="scroll" data-target=".navbar" data-offset="50">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<img src="{% static 'logo.png' %}" id="logo" height="50px" width="75px"/>
+				</div>
+				<div id="links">
+					<div class="collapse navbar-collapse " id="myNavbar">
+						<ul class="nav navbar-nav">
+							<li><a href="#home" id="a1" class="a">Home</a></li>
+							<li><a href="#menu" id="a2" class="a">Menu</a></li> 
+							<li><a href="#locate" id="a3" class="a">Locate Store</a></li>
+							<li><a href="#contact" id="a5" class="a">Contact</a></li>
+							<li><a id="a4" href="{% url 'order' %}" class="a">Order Online</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							{% if is_authenticated %}
+							<li><a href="{% url 'logout' %}" id="a8"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+							{% else %}
+								<li><a href="{% url 'sign_up' %}" id="a6"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+								<li><a href="{% url 'login' %}" id="a7"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+		
+		<div id="mainDiv">
+			<div id="home">
+				<button class="btn btn-success" id="button1"><a href="{% url 'order' %}"  ></a>ORDER ONLINE NOW</button>
+				<img src="{% static 'home_cover.jpg' %}" height="700vw" width="100%"/>
+				<div id="quote1">
+					<p class="quoteText">"A Wonderful Place,<br/>
+						For Some Wonderful Pizza's,<br/>
+						To Amaze You With Wonderful Taste."
+					</p>
+					
+				</div>
+			</div>
+			<div id="menu">
+				<br>
+				<div class="text-center">
+					<h1>MENU</h1>
+				</div>
+				<div class="row">
+					<div class="col-sm-4">
+						<h2 class="text-center">Pizza</h2>
+						<ul>
+							{% for pizza in pizzas %}
+								<li>{{ pizza }}</li>
+								<ol>
+									<li>+Single Topping | S ₹{{pizza.oneToppingSmall}} | L ₹{{pizza.oneToppingLarge}}</li>
+									<li>+Double Topping | S ₹{{pizza.twoToppingsSmall}} | L ₹{{pizza.twoToppingsLarge}}</li>
+									<li>+Triple Topping | S ₹{{pizza.threeToppingsSmall}} | L ₹{{pizza.threeToppingsLarge}}</li>
+								</ol>
+							{% endfor %}
+						</ul>
+					</div>
+					<div class="col-sm-4" >
+						<h2 class="text-center">Sub</h2>
+						<ul>
+							
+							{% for item in subWithExtras %}
+								<li>{{ item }}</li>
+							{% endfor %}
+							{% for cheese in extraCheese %}
+								<li><span id="span2">{{cheese}}</span></li>
+							{% endfor %}
+							
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						
+						<h2 class="text-center">Salad</h2>
+						<ul>
+							{% for salad in salads %}
+								<li>{{salad}}</li>
+							{% endfor %}
+						</ul>	
+						<h2 class="text-center">Pasta</h2>
+						<ul>
+							{% for pasta in pastaWithServings %}
+								<li>{{pasta}}</li>
+							{% endfor %}
+						</ul>
+						<h2 class="text-center">Dinner Platter</h2>
+						<ul>
+							{% for dish in dinnerPlatters %}
+								<li>{{dish}}</li>
+							{% endfor %}
+						</ul>
+						
+						<a href="{% url 'order' %}" id="button2" class="btn btn-default">Order Now!</a>
+					</div>
+					
+				</div>
+				<h2 class="text-center">Pizza Toppings</h2>
+				<ul id="pizza_toppings">
+					{% for topping in toppings %}
+						<li>{{topping}} | </li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div id="locate" >
+				<h1 class="text-center">Locate Store</h1>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.1756010983167!2d76.93684141428878!3d11.02544825756384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba858c2e613d369%3A0x13055c50ecc9b504!2sKulfistan!5e0!3m2!1sen!2sin!4v1591365751672!5m2!1sen!2sin" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+			</div>
+			
+			<div id="contact" class="text-center">
+				<h1 class="text-center">Contact Us</h1>
+				<p class="p2"><b>Phone:</b> 1234567890</p>
+				<p class="p2"><b>Email Us @:</b>emailid@abcmail.com</p>
+				<p class="p2"><b>Address:</b>198, some street, some area, some city, some state.</p>
+				<p><span class="fab fa-lg fa-instagram"></span>Instagram id </p>
+				<p>Extra<br> social medias</p>
+			</div>
+		</div>
+		
+		
+	</body>
+</html>
