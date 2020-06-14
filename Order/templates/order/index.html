@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="{% static 'index/styles.css' %}" >
 	</head>
 	<body data-spy="scroll" data-target=".navbar" data-offset="50">
-		<nav class="navbar navbar-inverse navbar-fixed-top">
+		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<img src="{% static 'logo.png' %}" id="logo" height="50px" width="75px"/>
@@ -22,14 +22,40 @@
 							<li><a href="#menu" id="a2" class="a">Menu</a></li> 
 							<li><a href="#locate" id="a3" class="a">Locate Store</a></li>
 							<li><a href="#contact" id="a5" class="a">Contact</a></li>
-							<li><a id="a4" href="{% url 'order' %}" class="a">Order Online</a></li>
+							<li><a id="a4" class="a" href="{% url 'order' %}">Order Online</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							{% if is_authenticated %}
-							<li><a href="{% url 'logout' %}" id="a8"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+								<li id="a8">
+									<div id="dropdown">
+										<a href="{% url 'logout' %}">
+											<svg class="bi bi-person-circle" width="30px" height="30px" viewbox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+												<path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+												<path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+												<path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+											  </svg>
+										</a>
+										<div id="dropdown-contents">
+											<a href="" >
+												<svg class="bi bi-person-fill" width="1em" height="1em" viewbox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+													<path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+												</svg>
+											  Profile
+											</a>
+											<a href="{% url 'logout' %}" >
+												<svg  class="bi bi-box-arrow-right" width="1em" height="1em" viewbox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+													<path fill-rule="evenodd" d="M11.646 11.354a.5.5 0 0 1 0-.708L14.293 8l-2.647-2.646a.5.5 0 0 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0z"/>
+													<path fill-rule="evenodd" d="M4.5 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z"/>
+													<path fill-rule="evenodd" d="M2 13.5A1.5 1.5 0 0 1 .5 12V4A1.5 1.5 0 0 1 2 2.5h7A1.5 1.5 0 0 1 10.5 4v1.5a.5.5 0 0 1-1 0V4a.5.5 0 0 0-.5-.5H2a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-1.5a.5.5 0 0 1 1 0V12A1.5 1.5 0 0 1 9 13.5H2z"/>
+												</svg>
+												Logout
+											</a>
+										</div>
+									</div>
+								</li>
 							{% else %}
-								<li><a href="{% url 'sign_up' %}" id="a6"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-								<li><a href="{% url 'login' %}" id="a7"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+								<li><a href="{% url 'sign_up' %}" id="a6"> Sign Up</a></li>
+								<li><a href="{% url 'login' %}" id="a7"> Login</a></li>
 							{% endif %}
 						</ul>
 					</div>
@@ -39,14 +65,13 @@
 		
 		<div id="mainDiv">
 			<div id="home">
-				<button class="btn btn-success" id="button1"><a href="{% url 'order' %}"  ></a>ORDER ONLINE NOW</button>
+				<a href="{% url 'order' %}" class="btn btn-success" id="button1">ORDER ONLINE NOW</a>
 				<img src="{% static 'home_cover.jpg' %}" height="700vw" width="100%"/>
 				<div id="quote1">
 					<p class="quoteText">"A Wonderful Place,<br/>
 						For Some Wonderful Pizza's,<br/>
 						To Amaze You With Wonderful Taste."
 					</p>
-					
 				</div>
 			</div>
 			<div id="menu">

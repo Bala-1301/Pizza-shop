@@ -5,21 +5,18 @@
 		<link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 		<style>
-			body {
-				background-color:aliceblue;
-			}
+			
 			#form {
-				border : 1px solid black;
+				box-shadow : 0 1px 10px 2px grey;
 				border-radius: 5px;
-				
 				padding-left: 20px;
 				padding-right: 20px;
-				height: 600px;
+				height: 450px;
 				width: 600px;
 				position : absolute;
 				top: 50%;
 				left: 50%;
-				margin-top: -300px;
+				margin-top: -225px;
 				margin-left: -300px;
 				background-color: white;
 			}
@@ -70,18 +67,6 @@
 							<input type="text" class="form-control" name="username" required="required" placeholder="Enter your name"/>
 						</div>
 					</div>
-					<div class="form-group">
-						<label class="col-sm-3" for="name">First Name:</label>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" name="firstname" required="required" placeholder="Enter your name"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-3" for="name">Last Name:</label>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" name="lastname" required="required" placeholder="Enter your name"/>
-						</div>
-					</div>
 					
 					<div class="form-group">
 						<label class="col-sm-3" for="email">Email-ID:</label>
@@ -119,7 +104,7 @@
 					{% endif %}
 				</div>
 				<div id="a1">
-					<a href="{% url 'index' %}">Already have an account? Sign in</a>
+					<a href="{% url 'login' %}">Already have an account? Sign in</a>
 				</div>
 			</div>
 		</div>

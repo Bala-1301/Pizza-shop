@@ -5,10 +5,10 @@
 		<title>Online Order</title>
 		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-		<link rel="stylesheet" href="{% static 'order/styles.css' %}" >
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-		<script src="{% url 'order/order.js' %}"></script>
+		<script src="{% static 'order/order.js' %}"></script>
+		<link rel="stylesheet" href="{% static 'order/styles.css' %}" >
 	</head>
 	<body data-spy="scroll" data-target=".navbar" data-offset="50">
 		
@@ -51,6 +51,24 @@
 										<option value="1" data-price="{{pizza.oneToppingSmall}}">Single: ₹{{pizza.oneToppingSmall}}</option>
 										<option value="2" data-price="{{pizza.twoToppingsSmall}}">Double: ₹{{pizza.twoToppingsSmall}}</option>
 										<option value="3" data-price="{{pizza.threeToppingsSmall}}">Triple: ₹{{pizza.threeToppingsSmall}}</option>
+									</select>
+									<select class="select2">
+										<option value="">-Top1-</option>
+										{% for topping in toppings %}
+											<option value="{{topping}}">{{topping}}</option>
+										{% endfor %}
+									</select>
+									<select class="select2">
+										<option value="">-Top2-</option>
+										{% for topping in toppings %}
+											<option value="{{topping}}">{{topping}}</option>
+										{% endfor %}
+									</select>
+									<select class="select2">
+										<option value="">-Top3-</option>
+										{% for topping in toppings %}
+											<option value="{{topping}}">{{topping}}</option>
+										{% endfor %}
 									</select>
 								</form>
 							</div>

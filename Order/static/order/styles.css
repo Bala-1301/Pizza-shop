@@ -93,9 +93,10 @@
 .select, .select2, .cart-select, .cart-select2, .select-pizza {
 	border : 0px;
 	border-bottom: 1px solid black;
-	display : inline-flex;
+	display : inline-block;
 }
 .select2 {
+	display : none;
 	margin:7px;
 	width : 55px;
 }
@@ -217,7 +218,7 @@
 	display: none;
 	position: fixed;
 	box-shadow :0 0 0 0 rgba(0, 0, 0, 0.2),  0 0 20px 0 rgba(0, 0, 0, 0.19) ;
-	bottom: 118px;
+	bottom: 115px;
 	right: 3vw;
 	width: 300px;
 	background-color:#ffe ;
